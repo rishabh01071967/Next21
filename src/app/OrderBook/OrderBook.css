@@ -1,0 +1,37 @@
+td {
+    color: azure;
+}
+
+th {
+    color: rgb(170, 170, 170);
+}
+
+.container {
+    color: #c4c7c9;
+    background-color: #2c3940;
+    height: 100vh;
+}
+
+table {
+    width: 50%;
+    margin: 0px 1px;
+    border-spacing: 0px;
+}
+
+.tableContainer {
+    display: flex;
+    background-color: rgb(27, 38, 45);
+    height: 640px;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.headingContainer {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(27, 38, 45);
+}

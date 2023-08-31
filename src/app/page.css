@@ -1,0 +1,8 @@
+.Main {
+    background-image: URL('https://bitfinex.com/images/thumbnails/bitfinex-1.png');
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
