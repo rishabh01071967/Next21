@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import Chart from 'react-apexcharts';
+import dynamic from "next/dynamic"
 import axios from 'axios';
 import DropDown from './DropDown';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -11,7 +11,7 @@ type HoveredData = {
   low: number;
   close: number;
 }
-
+const DynamicChart = dynamic(() => import('react-apexcharts'));
 const ApexChart = () => {
   const [chartData, setChartData] = useState<Array<Array<number>>>([]);
   const [hoveredData, setHoveredData] = useState<HoveredData | null>(null);
@@ -31,10 +31,8 @@ const ApexChart = () => {
     // Chart options...
     chart: {
       type: 'candlestick',
-      // height: '810px',
       events: {
-        dataPointMouseEnter: (event: any, chartContext: any, { dataPointIndex, seriesIndex }: any) => {
-          if (typeof window !== 'undefined') {
+        dataPointMouseEnter: (event: any, chartContext: any, { dataPointIndex, seriesIndex }:any) => {
             const o = chartContext.w.globals.seriesCandleO[seriesIndex][dataPointIndex];
             const h = chartContext.w.globals.seriesCandleH[seriesIndex][dataPointIndex];
             const l = chartContext.w.globals.seriesCandleL[seriesIndex][dataPointIndex];
@@ -46,7 +44,6 @@ const ApexChart = () => {
             else {
               setBackgroundColor('red');
             }
-          }
         },
       },
     },
@@ -115,7 +112,7 @@ const ApexChart = () => {
         </div>
       </div>
       {chartData.length === 0 ? <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><CircularProgress></CircularProgress></div> : <div>
-        <Chart options={options} series={series} type="candlestick" height='810px' />
+        {typeof window !== 'undefined' && <DynamicChart options={options} series={series} type="candlestick" height='810px' />}
       </div>}
     </div>
   );
