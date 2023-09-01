@@ -112,7 +112,7 @@ const ApexChart = () => {
         </div>
       </div>
       {chartData.length === 0 ? <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><CircularProgress></CircularProgress></div> : <div>
-        {typeof window !== 'undefined' && <DynamicChart options={options} series={series} type="candlestick" height='810px' />}
+        {typeof window !== 'undefined' && <DynamicChart options={options} series={series} type="candlestick"  height='720px' />}
       </div>}
     </div>
   );
