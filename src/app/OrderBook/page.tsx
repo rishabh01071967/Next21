@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 import CircularProgress from '@mui/material/CircularProgress';
 import './OrderBook.css';
 import Heading from './Heading';
+import '../ApexChart/ApexChart.css';
 const OrderBook = () => {
     const [bids, setBids] = useState<{ [key: string]: Array<number> }>({});
     const [asks, setAsks] = useState<{ [key: string]: Array<number> }>({});
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState<boolean>(false);
     let totalAsks = 0;
     let totalBids = 0;
     const request = {
@@ -101,7 +102,7 @@ const OrderBook = () => {
             <div>
                 <Heading></Heading>
             </div>
-            {loading ? <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><CircularProgress></CircularProgress></div> : <div className="tableContainer">
+            {loading ? <div className="circularLoading"><CircularProgress></CircularProgress></div> : <div className="tableContainer">
                 <table>
                     <thead>
                         <tr>
@@ -115,7 +116,7 @@ const OrderBook = () => {
                         {Object.values(bids).map((item: Array<number>, index: number) => {
                             totalBids += item[2];
                             return (
-                                <tr key={index} style={{ textAlign: 'center', backgroundImage: `linear-gradient(to left, rgb(49, 68, 50) ${totalBids * 5}%, rgb(27, 38, 45) 0%)` }} >
+                                <tr key={index} style={{ textAlign: 'center', backgroundImage: `linear-gradient(to left, rgb(49, 68, 50) ${totalBids * 3}%, rgb(27, 38, 45) 0%)` }} >
                                     <td>{item[1]}</td>
                                     <td>{item[2].toFixed(2)}</td>
                                     <td>{totalBids.toFixed(2)}</td>
@@ -139,7 +140,7 @@ const OrderBook = () => {
                         {Object.values(asks).map((item: Array<number>, index: number) => {
                             totalAsks = Math.abs(item[2]) + totalAsks;
                             return (
-                                <tr key={index} style={{ textAlign: 'center', backgroundImage: `linear-gradient(to right, #402c33 ${totalAsks * 5}%, #1b262d 0%)` }}>
+                                <tr key={index} style={{ textAlign: 'center', backgroundImage: `linear-gradient(to right, #402c33 ${totalAsks * 3}%, #1b262d 0%)` }}>
                                     <td>{item[0]}</td>
                                     <td>{totalAsks.toFixed(2)}</td>
                                     <td>{Math.abs(Number(item[2].toFixed(2)))}</td>
@@ -152,7 +153,7 @@ const OrderBook = () => {
 
                 </table>
             </div>}
-            <div style={{ display: 'flex', flexDirection: 'row-reverse', paddingTop: '15px' }}>
+            <div className="footer">
                 <h4>| REALTIME</h4>
                 <h4 style={{ color: '#82baf6' }}>FULL BOOK </h4>
             </div>

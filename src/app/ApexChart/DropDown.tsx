@@ -27,10 +27,7 @@ const DropDown = ({ handleCandle }: DropDownProps) => {
             {!show && <button style={{ width: '50px', height: '50px', backgroundColor: 'lightgrey' }} onClick={() => handleClick()}>{value1}</button>}
             {show && <Select onChange={(e) => handleSelectChange(e)}
                 sx={{
-                    width: 250,
-                    height: 50,
-                    color: 'white',
-                    backgroundColor: 'white'
+                    backgroundColor: 'lightgrey'
                 }}
             >
                 {obj.map((item, index) => {

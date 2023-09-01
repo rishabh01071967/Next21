@@ -3,3 +3,10 @@
     background-color: #2c3940;
     height: 100vh;
 }
+
+.circularLoading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}

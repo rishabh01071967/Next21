@@ -35,3 +35,9 @@ table {
     justify-content: space-between;
     background-color: rgb(27, 38, 45);
 }
+
+.footer {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-top: 15px;
+}
