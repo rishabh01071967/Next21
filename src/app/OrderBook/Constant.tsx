@@ -10,4 +10,6 @@ export const Amount='AMOUNT';
 export const Total='TOTAL';
 export const Count='COUNT';
 export const OrderBook='ORDERBOOK';
-export const BTC='BTC/USD'
+export const BTC='BTC/USD';
+export const Real='REALTIME';
+export const FullBook='FULL BOOK'
